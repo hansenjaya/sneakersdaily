@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakers Daily | Ukuran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="grid grid-cols-1 mt-8 animate-pulse mx-8 gap-8 lg:grid-cols-5">
+      <a
+        href="/"
+        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Beranda
+        </h5>
+      </a>
+
+      <a
+        href="/bahan"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Bahan
+        </h5>
+      </a>
+
+      <a
+        href="/kategori"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Kategori
+        </h5>
+      </a>
+      <a
+        href="/kondisi"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Kondisi
+        </h5>
+      </a>
+
+      <a
+        href="/warna"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Warna
+        </h5>
+      </a>
+
+      <a
+        href="/ukuran"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-cyan-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Ukuran
+        </h5>
+      </a>
+    </div>
+
+    <div class="mt-16 flex justify-center">
+      <div class="my-5">
+        <a
+          href="/ukuran/create"
+          class="bg-green-500 text-white font-bold text-center rounded-md shadow-sm py-2 px-4"
+          >Tambah Ukuran</a
+        >
+        <div class="overflow-x-auto mt-6">
+          <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+            <thead class="ltr:text-left rtl:text-right">
+              <tr>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  #
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Nama Ukuran
+                </th>
+
+                <th class="px-4 py-2">Aksi</th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+              {% for ukuran in list_ukuran %}
+              <tr>
+                <td
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  {{forloop.counter}}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ukuran.nama_ukuran}}
+                </td>
+
+                <td class="whitespace-nowrap px-4 py-2">
+                  <a
+                    href="editukuran/{{ukuran.id}}"
+                    class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                  >
+                    Edit
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

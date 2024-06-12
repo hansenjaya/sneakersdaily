@@ -1,0 +1,1 @@
+web: gunicorn sneakersdaily_2.wsgi:application --log-file -

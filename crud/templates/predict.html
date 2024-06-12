@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakers Daily | Prediksi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="grid grid-cols-1 mt-8 animate-pulse mx-8 gap-8 lg:grid-cols-5">
+      <a
+        href="/"
+        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-indigo-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Beranda
+        </h5>
+      </a>
+
+      <a
+        href="/bahan"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Bahan
+        </h5>
+      </a>
+
+      <a
+        href="/kategori"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Kategori
+        </h5>
+      </a>
+      <a
+        href="/kondisi"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Kondisi
+        </h5>
+      </a>
+
+      <a
+        href="/warna"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Warna
+        </h5>
+      </a>
+
+      <a
+        href="/ukuran"
+        class="block max-w-sm p-6 bg-white border border-blue-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          Ukuran
+        </h5>
+      </a>
+    </div>
+
+    {% if data %}
+    <div class="rounded-md bg-[#C4F9E2] mt-8 p-4">
+      <p class="flex items-center text-sm font-medium text-[#004434]">
+        <span class="pr-3">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="10" cy="10" r="10" fill="#00B078" />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M14.1203 6.78954C14.3865 7.05581 14.3865 7.48751 14.1203 7.75378L9.12026 12.7538C8.85399 13.02 8.42229 13.02 8.15602 12.7538L5.88329 10.4811C5.61703 10.2148 5.61703 9.78308 5.88329 9.51682C6.14956 9.25055 6.58126 9.25055 6.84753 9.51682L8.63814 11.3074L13.156 6.78954C13.4223 6.52328 13.854 6.52328 14.1203 6.78954Z"
+              fill="white"
+            />
+          </svg>
+        </span>
+        Hasil Prediksi : {{data.prediction_test}}
+      </p>
+    </div>
+    {% endif %}
+
+    <div class="mt-16 flex justify-center">
+      <div class="my-5">
+        <h5 class="mt-2 text-center font-bold">Form Prediksi</h5>
+        <div class="mt-8">
+          <form action="{% url 'predict' %}" method="POST">
+            {% csrf_token %}
+            <div class="mt-2">
+              <label for="">Ukuran</label>
+              <select
+                name="ukuran_field"
+                class="select mt-2 select-bordered border-2 border-black w-full max-w-xs"
+              >
+                {% for ukuran in list_ukuran %}
+                <option value="{{ukuran.id}}">{{ukuran.nama_ukuran}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mt-2">
+              <label for="">Warna</label>
+              <select
+                name="warna_field"
+                class="select mt-2 select-bordered border-2 border-black w-full max-w-xs"
+              >
+                {% for warna in list_warna %}
+                <option value="{{warna.id}}">{{warna.nama_warna}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mt-2">
+              <label for="">Harga</label>
+              <input
+                type="number"
+                name="harga_field"
+                class="border border-black w-full text-center rounded-md"
+              />
+            </div>
+
+            <div class="mt-2">
+              <label for="">Kategori</label>
+              <select
+                name="kategori_field"
+                class="select mt-2 select-bordered border-2 border-black w-full max-w-xs"
+              >
+                {% for kategori in list_kategori %}
+                <option value="{{kategori.id}}">
+                  {{kategori.nama_kategori}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mt-2">
+              <label for="">Bahan</label>
+              <select
+                name="bahan_field"
+                class="select mt-2 select-bordered border-2 border-black w-full max-w-xs"
+              >
+                {% for bahan in list_bahan %}
+                <option value="{{bahan.id}}">{{bahan.nama_bahan}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="mt-2">
+              <label for="">Kondisi</label>
+              <select
+                name="kondisi_field"
+                class="select mt-2 select-bordered border-2 border-black w-full max-w-xs"
+              >
+                {% for kondisi in list_kondisi %}
+                <option value="{{kondisi.id}}">{{kondisi.nama_kondisi}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="bg-sky-600 text-white px-2 py-2 rounded text-center font-bold mt-4 w-full"
+            >
+              Prediksi
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneakers Daily | Ukuran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="mt-16 flex justify-center">
+      <div class="my-5">
+        <h1 class="text-lg font-bold">Form Tambah Ukuran</h1>
+        <form action="{% url 'storeukuran' %}" method="post">
+          {% csrf_token %}
+          <div class="mb-4 mt-5">
+            <label
+              for="UserEmail"
+              class="block text-md font-medium text-gray-700"
+            >
+              Nama Ukuran
+            </label>
+
+            <input
+              type="text"
+              id="nama_ukuran"
+              name="nama_ukuran_field"
+              placeholder="john@rhcp.com"
+              class="mt-1 w-full rounded-md border-2 px-2 py-1 border-gray-600 shadow-sm sm:text-sm"
+            />
+          </div>
+          <button class="bg-blue-600 text-white px-2 py-2 rounded-md">
+            Simpan Ukuran
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
