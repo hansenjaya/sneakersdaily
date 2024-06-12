@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-aa-u3o2e7mofg(u7dklr=4x875#wa79ftbei99oq@833c6leag
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://conscious-andreana-sneakersdaily2-6cab2e77.koyeb.app'
+    'conscious-andreana-sneakersdaily2-6cab2e77.koyeb.app'
 ]
 
 
